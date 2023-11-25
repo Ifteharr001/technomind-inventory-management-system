@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-      <div className="bg-[#bdbaba]">
+      <div className="bg-[#f2f2f2]">
         <footer className="footer p-10 text-base-content w-[1140px] mx-auto">
           <aside>
             <img
@@ -32,8 +32,12 @@ const Footer = () => {
             <a className="link link-hover">Cookie policy</a>
           </nav>
         </footer>
-        <aside className="footer-center p-4 bg-base-300 text-base-content">
-          <p>Copyright © 2023 - All right reserved by <span className="text-[#f31312] font-bold">TechnoMinds LTD</span></p>
+        <div className="divider"></div>
+        <aside className="footer-center p-4 bg-[#f2f2f2] text-base-content">
+          <p>
+            Copyright © 2023 - All right reserved by{" "}
+            <span className="text-[#f31312] font-bold">TechnoMinds LTD</span>
+          </p>
         </aside>
       </div>
     );
