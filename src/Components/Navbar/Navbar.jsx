@@ -64,7 +64,10 @@ const Navbar = () => {
               {navMenu}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <img className="w-16"
+            src="https://i.ibb.co/WtVHj01/7ad01839e2bbf81b9ed32f6fd1b54d62-removebg-preview.png"
+            alt=""
+          />
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
