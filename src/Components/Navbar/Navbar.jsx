@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const navMenu = (
@@ -10,7 +10,7 @@ const Navbar = () => {
               isPending
                 ? ""
                 : isActive
-                ? "text-[#38b879] border-b-4 border-[#38b879] rounded-none"
+                ? "text-[#f31312] border-b-4 border-[#f31312] rounded-none"
                 : ""
             }
           >
@@ -25,58 +25,78 @@ const Navbar = () => {
               isPending
                 ? ""
                 : isActive
-                ? "text-[#38b879] border-b-4 border-[#38b879] rounded-none"
+                ? "text-[#f31312] border-b-4 border-[#f31312] rounded-none"
                 : ""
             }
           >
-            Login
+            Create Store
+          </NavLink>
+        </li>
+        <li className="font-bold">
+          <NavLink
+            to="/login"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? ""
+                : isActive
+                ? "text-[#f31312] border-b-4 border-[#f31312] rounded-none"
+                : ""
+            }
+          >
+            Watch Demo
           </NavLink>
         </li>
       </>
     );
     return (
-      //#38b879
-      // #262c38
-      <div className="navbar bg-[#262c38] text-white">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+      <div className="bg-[#c7bdbd]">
+        <div className="navbar w-[1140px] mx-auto text-white">
+          <div className="navbar-start">
+            <div className="dropdown">
+              <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
+                {/* navbar */}
+                {navMenu}
+              </ul>
+            </div>
+            <div className="flex text-center justify-center items-center">
+              <img
+                className="w-16"
+                src="https://i.ibb.co/WtVHj01/7ad01839e2bbf81b9ed32f6fd1b54d62-removebg-preview.png"
+                alt=""
+              />
+              <h2 className="font-bold text-[#f31312] text-2xl">TechnoMinds</h2>
+            </div>
+          </div>
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">
               {/* navbar */}
               {navMenu}
             </ul>
           </div>
-          <img className="w-16"
-            src="https://i.ibb.co/WtVHj01/7ad01839e2bbf81b9ed32f6fd1b54d62-removebg-preview.png"
-            alt=""
-          />
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {/* navbar */}
-            {navMenu}
-          </ul>
-        </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+          <div className="navbar-end">
+            <button className="btn rounded-none text-white bg-[#f31312] border-none">
+              <Link>Login / Register</Link>
+            </button>
+          </div>
         </div>
       </div>
     );
