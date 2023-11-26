@@ -97,7 +97,7 @@ const Navbar = () => {
           </div>
           <div className="navbar-end">
             <button className="btn rounded-none text-white bg-[#f31312] border-none">
-              <Link>Login / Register</Link>
+              <Link to="/login">Login / Register</Link>
             </button>
           </div>
         </div>
