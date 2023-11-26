@@ -20,7 +20,7 @@ const Navbar = () => {
 
         <li className="font-bold">
           <NavLink
-            to="/login"
+            to="/create-store"
             className={({ isActive, isPending }) =>
               isPending
                 ? ""
