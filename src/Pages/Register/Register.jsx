@@ -8,7 +8,8 @@ const Register = () => {
     const [registerError, setRegisterError] = useState("");
     const [success, setSuccess] = useState("");
     const [show, setShow] = useState(false);
-    const { createUser, googleProvider } = useContext(AuthContext);
+    const { createUser, googleProvider, updateUserProfile, logOut } =
+      useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const handleRegister = (e) => {
@@ -25,7 +26,8 @@ const Register = () => {
       if (password.length < 6) {
         setRegisterError("Password should be at least 6 characters");
         return;
-      } else if (!/[A-Z]/.test(password)) {
+      } 
+    else if (!/[A-Z]/.test(password)) {
         setRegisterError("Do not have a capital letter");
         return;
       } else if (!/[#?!@$%^&*-]/.test(password)) {
@@ -38,6 +40,12 @@ const Register = () => {
           console.log(result.user);
           setSuccess("User Created Successfully");
           navigate(location?.state ? location.state : "/");
+          updateUserProfile(name, photo)
+          .then(() => {
+            console.log('user profile updated')
+             logOut().then().catch();
+             navigate('/login')
+          }) .catch(error => console.log(error))
         })
         .catch((error) => {
           console.log(error);
@@ -47,8 +55,8 @@ const Register = () => {
     const handleGoogleRegister = () => {
       googleProvider()
         .then((result) => {
-          console.log(result.user);
           navigate(location?.state ? location.state : "/");
+          console.log(result.user);
         })
         .catch((error) => {
           console.log(error);
@@ -144,10 +152,10 @@ const Register = () => {
                     </button>
                   </div>
                   {registerError && (
-                    <p className="text-red-900 font-bold">{registerError}</p>
+                    <p className="text-[#fff] font-bold">{registerError}</p>
                   )}
                   {success && (
-                    <p className="text-green-700 font-bold">{success}</p>
+                    <p className="text-green-300 font-bold">{success}</p>
                   )}
                   <p className="text-white">
                     Already have an account, Please{" "}
