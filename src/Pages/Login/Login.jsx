@@ -1,24 +1,45 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye, FaGoogle  } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 const Login = () => {
     const [show, setShow] = useState(false);
+
+    const { login, googleProvider } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
     const handleLogin = (e) => {
       e.preventDefault();
       const form = e.target;
       const email = form.email.value;
       const password = form.password.value;
       console.log(email, password);
-     
+        login(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
         
+    };
+    const handleGoogleLogin = () => {
+      googleProvider()
+        .then((result) => {
+          console.log(result.user);
+          navigate(location?.state ? location.state : "/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
     return (
       <div>
+        <Helmet>
+          <title>TechnoMinds | Login</title>
+        </Helmet>
         <div className="hero min-h-screen  bg-base-200">
           <div className="hero-content grid grid-flow-row">
-            <h1 className="text-3xl font-bold text-center ">
-              Login Account
-            </h1>
+            <h1 className="text-3xl font-bold text-center ">Login Account</h1>
             <div className="card rounded-none flex-shrink-0 lg:w-[400px] shadow-2xl  bg-[#f31312] border-none">
               <form onSubmit={handleLogin} className="card-body">
                 <div className="form-control">
@@ -63,7 +84,10 @@ const Login = () => {
                   </button>
                 </div>
                 <div className="form-control mt-3">
-                  <button className="btn rounded-none bg-[#000000] border-none text-white">
+                  <button
+                    onClick={handleGoogleLogin}
+                    className="btn rounded-none bg-[#000000] border-none text-white"
+                  >
                     <FaGoogle /> Login with google
                   </button>
                 </div>
