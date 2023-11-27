@@ -3,9 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye, FaGoogle  } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const Login = () => {
     const [show, setShow] = useState(false);
-
+    const axiosPublic = useAxiosPublic()
     const { login, googleProvider } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -26,8 +27,14 @@ const Login = () => {
     const handleGoogleLogin = () => {
       googleProvider()
         .then((result) => {
-          console.log(result.user);
-          navigate(location?.state ? location.state : "/");
+           const userInfo = {
+             email: result.user?.email,
+             name: result.user?.displayName,
+           };
+           axiosPublic.post("/users", userInfo).then((res) => {
+             console.log(res.data);
+             navigate(location?.state ? location.state : "/");
+           });
         })
         .catch((error) => {
           console.log(error);

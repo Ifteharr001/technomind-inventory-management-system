@@ -69,7 +69,16 @@ const Register = () => {
     const handleGoogleRegister = () => {
       googleProvider()
         .then((result) => {
-          navigate(location?.state ? location.state : "/");
+          const userInfo = {
+            email: result.user?.email,
+            name: result.user?.displayName
+          }
+          axiosPublic.post('/users', userInfo)
+          .then(res => {
+            console.log(res.data);
+            navigate(location?.state ? location.state : "/");
+          })
+          
           console.log(result.user);
         })
         .catch((error) => {
