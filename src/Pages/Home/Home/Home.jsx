@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "../Banner/Banner";
 import Testimonial from "../Testimonial/Testimonial";
+import Service from "../Service/Service";
 
 const Home = () => {
     return (
@@ -9,7 +10,7 @@ const Home = () => {
           <title>TechnoMinds | Home</title>
         </Helmet>
         <Banner />
-        {/* TODO: service card */}
+        <Service></Service>
         <Testimonial></Testimonial>
         {/* TODO: map or shop location */}
       </div>
