@@ -3,8 +3,10 @@ import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye, FaGoogle } from "react-icons/fa";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
+    const axiosPublic = useAxiosPublic()
     const [registerError, setRegisterError] = useState("");
     const [success, setSuccess] = useState("");
     const [show, setShow] = useState(false);
@@ -37,11 +39,23 @@ const Register = () => {
 
       createUser(email, password)
         .then((result) => {
+
           console.log(result.user);
           setSuccess("User Created Successfully");
           navigate(location?.state ? location.state : "/");
           updateUserProfile(name, photo)
           .then(() => {
+            const userInfo = {
+              name: name,
+              email: email
+            }
+            // send user data to database
+            axiosPublic.post('/users', userInfo)
+            .then(res => {
+              if(res.data.insertedId){
+                // TODO: showing toast
+              }
+            })
             console.log('user profile updated')
              logOut().then().catch();
              navigate('/login')
