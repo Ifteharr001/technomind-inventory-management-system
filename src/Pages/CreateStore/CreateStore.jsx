@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import useAxiosPublic from "../../Hooks/useAxiosPublic"
+import { useNavigate } from "react-router-dom";
 const CreateStore = () => {
    const { user } = useContext(AuthContext);
-
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate()
   const handleCreateShop = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -25,7 +28,13 @@ const CreateStore = () => {
     };
     console.log(createShop);
 
-    
+    axiosPublic.post('/userShop', createShop)
+    .then(res => {
+      console.log(res.data)
+      if(res.data.insertedId){
+        navigate("/");
+      }
+    })
   };
 
 

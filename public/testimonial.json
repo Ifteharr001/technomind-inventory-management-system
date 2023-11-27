@@ -2,29 +2,15 @@
   {
     "_id": "1",
     "testimonial_description": "I've been using this website for all my technology inventory needs, and it has made managing and tracking items a breeze. The user-friendly interface and powerful features have significantly improved our workflow.",
-    "img": "url_to_image1.jpg",
+    "img": "https://i.ibb.co/DC0TkFV/download.jpg",
     "name": "John Doe",
     "date": "2023-11-25"
   },
   {
     "_id": "2",
     "testimonial_description": "The technology inventory system provided by this website is top-notch. It has saved us time and effort in keeping track of our equipment. The reporting features are especially useful for analyzing usage patterns.",
-    "img": "url_to_image2.jpg",
+    "img": "https://i.ibb.co/KF2vYrN/download-8.jpg",
     "name": "Jane Smith",
     "date": "2023-11-26"
-  },
-  {
-    "_id": "3",
-    "testimonial_description": "As a tech enthusiast, I appreciate the variety and accuracy of information available on this website. It's my go-to place for checking out the latest gadgets and staying informed about tech trends.",
-    "img": "url_to_image3.jpg",
-    "name": "Robert Johnson",
-    "date": "2023-11-27"
-  },
-  {
-    "_id": "4",
-    "testimonial_description": "The customer support team is fantastic! Whenever I had a question or needed assistance, they were quick to respond and provided clear guidance. It's reassuring to know that help is just a message away.",
-    "img": "url_to_image4.jpg",
-    "name": "Emily Williams",
-    "date": "2023-11-28"
   }
 ]
