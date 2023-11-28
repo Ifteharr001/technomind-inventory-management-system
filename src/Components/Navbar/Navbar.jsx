@@ -48,7 +48,7 @@ console.log(emails);
       <li className="font-bold">
         {isUserEmailInArray ? (
           <NavLink
-            to="/dashboard"
+            to="/dashboard/shopProfile"
             className={({ isActive, isPending }) =>
               isPending
                 ? ""

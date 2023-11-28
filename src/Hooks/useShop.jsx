@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react";
 
-
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "./useAxiosSecure"
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
 const useShop = () => {
-    const [shop, setShop] = useState([]);
-    const [loading, setLoading] = useState(true);
-    useEffect(()=> {
-        fetch("http://localhost:5000/userShop")
-        .then(res => res.json())
-        .then(data => {
-            setShop(data);
-            setLoading(false)
-        });
-    }, [])
-    return [shop, loading]
+    const {user} = useContext(AuthContext);
+    const axiosSecure = useAxiosSecure()
+    const {data: shop=[]} = useQuery({
+        queryKey: ['shop', user?.email],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/userShop?email=${user.email}`)
+              console.log(res.data);
+            return res.data;
+        }
+    })
+    
+    return [shop]
 };
 
 export default useShop;
