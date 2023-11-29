@@ -10,6 +10,7 @@ import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
 import MyProduct from "../Pages/Dashboard/MyProduct/MyProduct";
 import SalesCollection from "../Pages/Dashboard/SalesCollection/SalesCollection";
 import ShopProfile from "../Pages/Dashboard/ShopProfile/ShopProfile";
+import UpdateProduct from "../Pages/Dashboard/updateProduct/UpdateProduct";
 
 
 export const router = createBrowserRouter([
@@ -41,7 +42,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "shopProfile",
@@ -49,16 +54,22 @@ export const router = createBrowserRouter([
       },
       {
         path: "addProduct",
-        element: <AddProduct></AddProduct>
+        element: <AddProduct></AddProduct>,
       },
       {
         path: "myProduct",
-        element: <MyProduct></MyProduct>
+        element: <MyProduct></MyProduct>,
+      },
+      {
+        path: "updateProduct/:id",
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/addProducts/${params.id}`),
       },
       {
         path: "salesCollection",
-        element: <SalesCollection></SalesCollection>
-      }
+        element: <SalesCollection></SalesCollection>,
+      },
     ],
   },
 ]);

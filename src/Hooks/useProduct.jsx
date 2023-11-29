@@ -6,7 +6,7 @@ import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
 const useProduct = () => {
      const { user } = useContext(AuthContext);
      const axiosSecure = useAxiosSecure();
-     const {data: product=[]} = useQuery({
+     const {data: product=[], refetch} = useQuery({
         queryKey: ['product', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/addProducts?email=${user.email}`)
@@ -14,7 +14,7 @@ const useProduct = () => {
             return res.data;
         }
     })
-    return [product];
+    return [product, refetch];
 };
 
 export default useProduct;

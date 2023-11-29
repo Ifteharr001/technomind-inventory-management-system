@@ -1,9 +1,35 @@
+import Swal from "sweetalert2";
 import useProduct from "../../../Hooks/useProduct";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 const MyProduct = () => {
-    const [product] = useProduct();
-    const handleDeleteProduct = (products) => {
-        
+    const [product, refetch] = useProduct();
+    const axiosPublic = useAxiosPublic();
+    const handleDeleteProduct =  (products) => {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            const res =  await axiosPublic.delete(`/addProducts/${products._id}`);
+            console.log(res.data)
+            if(res.data.deletedCount > 0){
+                refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "This Product Is deleted.",
+              icon: "success",
+            });
+            }
+            
+          }
+        });
     }
     return (
       <div className="w-[800px] mx-auto">
@@ -50,7 +76,9 @@ const MyProduct = () => {
                   <td>{products?.quantity}</td>
                   <td>{products?.discount}</td>
                   <th>
-                    <button className="btn btn-ghost btn-xs">update</button>
+                    <Link to={`/dashboard/updateProduct/${products._id}`}>
+                        <button className="btn btn-ghost btn-xs">update</button>
+                    </Link>
                   </th>
                   <th>
                     <button onClick={() => handleDeleteProduct(products)} className="btn btn-ghost btn-xs">delete</button>
