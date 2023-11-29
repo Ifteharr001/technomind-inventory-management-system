@@ -55,7 +55,7 @@ const Dashboard = () => {
                     : ""
                 }
               >
-                My Products
+                Manage Product
               </NavLink>
             </li>
             <li className="font-bold">
