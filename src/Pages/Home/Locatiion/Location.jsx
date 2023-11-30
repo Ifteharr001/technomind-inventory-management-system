@@ -1,7 +1,7 @@
 
 const Location = () => {
     return (
-      <div className="w-[1140px] mx-auto mt-16">
+      <div className="w-[1140px] mx-auto my-16">
         <div className="card lg:card-side bg-base-100 shadow-xl rounded-none">
           <figure>
             <img

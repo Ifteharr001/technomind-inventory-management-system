@@ -39,6 +39,16 @@ const MyProduct = () => {
           <span className="text-[#f31312]">----</span>
         </h2>
         <div className="overflow-x-auto mt-16">
+          <div className="flex justify-between items-center mb-8 border-t-4 border-b-4 ">
+            <h2 className="font-bold text-2xl">
+              Total {product.length} Product Added
+            </h2>
+            <Link to="/dashboard/addProduct">
+              <button className="btn bg-[#f31312] rounded-none hover:bg-[#81391e] text-white font-bold border-none w-[200px]">
+                Add Product
+              </button>
+            </Link>
+          </div>
           <table className="table bg-[#faf5f5]">
             {/* head */}
             <thead>
@@ -77,11 +87,16 @@ const MyProduct = () => {
                   <td>{products?.discount}</td>
                   <th>
                     <Link to={`/dashboard/updateProduct/${products._id}`}>
-                        <button className="btn btn-ghost btn-xs">update</button>
+                      <button className="btn btn-ghost btn-xs">update</button>
                     </Link>
                   </th>
                   <th>
-                    <button onClick={() => handleDeleteProduct(products)} className="btn btn-ghost btn-xs">delete</button>
+                    <button
+                      onClick={() => handleDeleteProduct(products)}
+                      className="btn btn-ghost btn-xs"
+                    >
+                      delete
+                    </button>
                   </th>
                 </tr>
               ))}
