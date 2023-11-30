@@ -1,8 +1,13 @@
-# React + Vite
+# TechnoMinds
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This website making for INVENTORY MANAGEMENT. In this website have many of features.
 
-Currently, two official plugins are available:
+Lets talk to the brife:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- When user visit this website user can login and register.
+- In this website user can create her/him own shop and user can manage her/him product
+- User can delete, update her own product
+- when user visit dashboard > my profile page then user see her shop name email roll and more.
+- Also Shop Owner can manage her all product and add her product but when her/him product limit is upto 3 then user can buy our subscription plan.
+
+Tankyou.
