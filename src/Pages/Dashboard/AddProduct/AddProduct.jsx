@@ -35,14 +35,14 @@ const AddProduct = () => {
             }
             const addRes = await axiosPublic.post('/addProducts', addProduct)
             console.log(addRes.data)
-            if(addRes.data.insertedId){
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: `${data.name} is added`,
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
+            if (addRes.data.insertedId) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `${data.name} is added`,
+                showConfirmButton: false,
+                timer: 1500,
+              });
             }
         }
         console.log(res.data)

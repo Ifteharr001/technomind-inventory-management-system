@@ -76,7 +76,8 @@ console.log(emails);
       </li>
       <li className="font-bold">
         <NavLink
-          to="/login"
+          to="https://www.youtube.com/watch?v=sL15VM-xN60"
+          target="_blank"
           className={({ isActive, isPending }) =>
             isPending
               ? ""
