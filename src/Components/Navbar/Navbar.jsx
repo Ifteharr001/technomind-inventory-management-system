@@ -1,28 +1,29 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
-
+import useAdmin from "../../Hooks/useAdmin";
 const Navbar = () => {
+  const [emails, setEmails] = useState([]);
+  const [shop, setShop] = useState();
 
-const [emails, setEmails] = useState([]);
-const [shop, setShop] = useState();
+  const [isAdmin] = useAdmin();
 
-useEffect(() => {
-  fetch("http://localhost:5000/userShop")
-    .then((res) => res.json())
-    .then((data) => {
-      setShop(data);
-    });
-}, []);
+  useEffect(() => {
+    fetch("https://server-side-ten-nu.vercel.app/userShop")
+      .then((res) => res.json())
+      .then((data) => {
+        setShop(data);
+      });
+  }, []);
 
-useEffect(() => {
-  if (shop && shop.length > 0) {
-    const allEmails = shop.map((s) => s.ownerEmail);
-    setEmails(allEmails);
-  }
-}, [shop]); 
+  useEffect(() => {
+    if (shop && shop.length > 0) {
+      const allEmails = shop.map((s) => s.ownerEmail);
+      setEmails(allEmails);
+    }
+  }, [shop]);
 
-// console.log(emails);
+  // console.log(emails);
 
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
@@ -47,7 +48,7 @@ useEffect(() => {
       </li>
 
       <li className="font-bold">
-        {isUserEmailInArray ? (
+        {isUserEmailInArray || isAdmin ? (
           <NavLink
             to="/dashboard"
             className={({ isActive, isPending }) =>

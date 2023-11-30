@@ -17,13 +17,11 @@ import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 import ManageShop from "../Pages/Dashboard/Admin/ManageShop/ManageShop";
 import SaleSummary from "../Pages/Dashboard/Admin/SaleSummary/SaleSummary";
 
-
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
     errorElement: <ErrorPage></ErrorPage>,
-    loader: () => fetch("http://localhost:5000/users"),
     children: [
       {
         path: "/",
@@ -54,7 +52,6 @@ export const router = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRoute>
     ),
-    loader: () => fetch("http://localhost:5000/users"),
     children: [
       {
         path: "shopProfile",
@@ -72,7 +69,9 @@ export const router = createBrowserRouter([
         path: "updateProduct/:id",
         element: <UpdateProduct></UpdateProduct>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/addProducts/${params.id}`),
+          fetch(
+            `https://server-side-ten-nu.vercel.app/addProducts/${params.id}`
+          ),
       },
       {
         path: "salesCollection",
@@ -91,7 +90,7 @@ export const router = createBrowserRouter([
       {
         path: "manageShop",
         element: <ManageShop></ManageShop>,
-        loader: () => fetch("http://localhost:5000/useShop"),
+        loader: () => fetch("https://server-side-ten-nu.vercel.app/useShop"),
       },
       {
         path: "saleSummary",

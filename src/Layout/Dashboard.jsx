@@ -2,11 +2,12 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import useShop from "../Hooks/useShop";
 import { useContext} from "react";
 import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
    
 
-  const admin = true;
+  const [isAdmin] = useAdmin();
 
      const { logOut } = useContext(AuthContext);
      
@@ -21,7 +22,7 @@ const Dashboard = () => {
             <img className="w-[150px]" src={shop[0]?.shopLogo} alt="" />
           </div>
           <ul className="menu p-4">
-            {admin ? (
+            {isAdmin ? (
               // admin dashboard
 
               <>
