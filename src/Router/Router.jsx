@@ -12,6 +12,10 @@ import SalesCollection from "../Pages/Dashboard/SalesCollection/SalesCollection"
 import ShopProfile from "../Pages/Dashboard/ShopProfile/ShopProfile";
 import UpdateProduct from "../Pages/Dashboard/updateProduct/UpdateProduct";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile/AdminProfile";
+import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
+import ManageShop from "../Pages/Dashboard/Admin/ManageShop/ManageShop";
+import SaleSummary from "../Pages/Dashboard/Admin/SaleSummary/SaleSummary";
 
 
 export const router = createBrowserRouter([
@@ -19,6 +23,7 @@ export const router = createBrowserRouter([
     path: "/",
     element: <MainLayout></MainLayout>,
     errorElement: <ErrorPage></ErrorPage>,
+    loader: () => fetch("http://localhost:5000/users"),
     children: [
       {
         path: "/",
@@ -49,6 +54,7 @@ export const router = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRoute>
     ),
+    loader: () => fetch("http://localhost:5000/users"),
     children: [
       {
         path: "shopProfile",
@@ -71,6 +77,25 @@ export const router = createBrowserRouter([
       {
         path: "salesCollection",
         element: <SalesCollection></SalesCollection>,
+      },
+
+      //admin routes
+      {
+        path: "adminProfile",
+        element: <AdminProfile></AdminProfile>,
+      },
+      {
+        path: "allUsers",
+        element: <AllUsers></AllUsers>,
+      },
+      {
+        path: "manageShop",
+        element: <ManageShop></ManageShop>,
+        loader: () => fetch("http://localhost:5000/useShop"),
+      },
+      {
+        path: "saleSummary",
+        element: <SaleSummary></SaleSummary>,
       },
     ],
   },

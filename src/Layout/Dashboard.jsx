@@ -1,10 +1,15 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useShop from "../Hooks/useShop";
-import { useContext } from "react";
+import { useContext} from "react";
 import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
 
 const Dashboard = () => {
+   
+
+  const admin = true;
+
      const { logOut } = useContext(AuthContext);
+     
      const handleLogOut = () => {
        logOut().then().catch();
      };
@@ -16,63 +21,132 @@ const Dashboard = () => {
             <img className="w-[150px]" src={shop[0]?.shopLogo} alt="" />
           </div>
           <ul className="menu p-4">
-            <li className="font-bold">
-              <NavLink
-                to="/dashboard/shopProfile"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? ""
-                    : isActive
-                    ? "text-[#fff] border-b-4 border-[#fff] rounded-none"
-                    : ""
-                }
-              >
-                Shop Profile
-              </NavLink>
-            </li>
-            <li className="font-bold">
-              <NavLink
-                to="/dashboard/addProduct"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? ""
-                    : isActive
-                    ? "text-[#fff] border-b-4 border-[#fff] rounded-none"
-                    : ""
-                }
-              >
-                Add Product
-              </NavLink>
-            </li>
-            <li className="font-bold">
-              <NavLink
-                to="/dashboard/myProduct"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? ""
-                    : isActive
-                    ? "text-[#fff] border-b-4 border-[#fff] rounded-none"
-                    : ""
-                }
-              >
-                Manage Product
-              </NavLink>
-            </li>
-            <li className="font-bold">
-              <NavLink
-                to="/dashboard/salesCollection"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "text-[#fff]"
-                    : isActive
-                    ? "text-[#fff]  border-b-4  bg-transparent border-[#fff] rounded-none"
-                    : ""
-                }
-              >
-                Sales Collection
-              </NavLink>
-            </li>
+            {admin ? (
+              // admin dashboard
+
+              <>
+                <li className="font-bold">
+                  <NavLink
+                    to="/dashboard/adminProfile"
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? ""
+                        : isActive
+                        ? "text-[#fff] border-b-4 border-[#fff] rounded-none"
+                        : ""
+                    }
+                  >
+                    Admin Profile
+                  </NavLink>
+                </li>
+                <li className="font-bold">
+                  <NavLink
+                    to="/dashboard/manageShop"
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? ""
+                        : isActive
+                        ? "text-[#fff] border-b-4 border-[#fff] rounded-none"
+                        : ""
+                    }
+                  >
+                    Manage Shop
+                  </NavLink>
+                </li>
+                <li className="font-bold">
+                  <NavLink
+                    to="/dashboard/saleSummary"
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? ""
+                        : isActive
+                        ? "text-[#fff] border-b-4 border-[#fff] rounded-none"
+                        : ""
+                    }
+                  >
+                    Sale Summary
+                  </NavLink>
+                </li>
+                <li className="font-bold">
+                  <NavLink
+                    to="/dashboard/allUsers"
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "text-[#fff]"
+                        : isActive
+                        ? "text-[#fff]  border-b-4  bg-transparent border-[#fff] rounded-none"
+                        : ""
+                    }
+                  >
+                    All Users
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              // shop dashboard
+              <>
+                <li className="font-bold">
+                  <NavLink
+                    to="/dashboard/shopProfile"
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? ""
+                        : isActive
+                        ? "text-[#fff] border-b-4 border-[#fff] rounded-none"
+                        : ""
+                    }
+                  >
+                    Shop Profile
+                  </NavLink>
+                </li>
+                <li className="font-bold">
+                  <NavLink
+                    to="/dashboard/addProduct"
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? ""
+                        : isActive
+                        ? "text-[#fff] border-b-4 border-[#fff] rounded-none"
+                        : ""
+                    }
+                  >
+                    Add Product
+                  </NavLink>
+                </li>
+                <li className="font-bold">
+                  <NavLink
+                    to="/dashboard/myProduct"
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? ""
+                        : isActive
+                        ? "text-[#fff] border-b-4 border-[#fff] rounded-none"
+                        : ""
+                    }
+                  >
+                    Manage Product
+                  </NavLink>
+                </li>
+                <li className="font-bold">
+                  <NavLink
+                    to="/dashboard/salesCollection"
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "text-[#fff]"
+                        : isActive
+                        ? "text-[#fff]  border-b-4  bg-transparent border-[#fff] rounded-none"
+                        : ""
+                    }
+                  >
+                    Sales Collection
+                  </NavLink>
+                </li>
+              </>
+            )}
+
             <div className="divider"></div>
+
+            {/* / */}
             <li className="font-bold">
               <NavLink
                 to="/"

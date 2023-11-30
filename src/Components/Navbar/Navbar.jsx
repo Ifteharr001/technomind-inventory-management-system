@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 
 const Navbar = () => {
+
 const [emails, setEmails] = useState([]);
 const [shop, setShop] = useState();
 
@@ -21,7 +22,7 @@ useEffect(() => {
   }
 }, [shop]); 
 
-console.log(emails);
+// console.log(emails);
 
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
@@ -48,7 +49,7 @@ console.log(emails);
       <li className="font-bold">
         {isUserEmailInArray ? (
           <NavLink
-            to="/dashboard/shopProfile"
+            to="/dashboard"
             className={({ isActive, isPending }) =>
               isPending
                 ? ""
