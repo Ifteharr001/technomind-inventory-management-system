@@ -1,5 +1,5 @@
 # TechnoMinds
-
+### Live Link: https://technominds-9a66d.web.app/
 This website making for INVENTORY MANAGEMENT. In this website have many of features.
 
 Lets talk to the brife:
