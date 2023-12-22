@@ -20,18 +20,18 @@ const Banner = () => {
       >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
-          <div className="grid grid-cols-3">
+          <div className="grid grid-cols-1 md:grid-cols-3">
             {/* hero content */}
-            <div className="col-span-2">
+            <div className="md:col-span-2">
               <p className="text-[#fff] font-bold">
-                ---- Buy Smart Products ----
+                ---- You can  managing, tracking for your items ----
               </p>
               <h2 className="text-7xl font-bold">
                 Smart <span className="text-[#f31312]">Products</span> <br />{" "}
                 For Your Life
               </h2>
               <p className="mt-4 text-[#fff] font-bold">
-                ---- Sell Your Own Products ----
+                ---- More useful for analyzing usage patterns ----
               </p>
               <div className="mt-8">
                 <button className="btn rounded-none text-white bg-[#f31312] border-none">
@@ -40,7 +40,7 @@ const Banner = () => {
               </div>
             </div>
             {/* hero slider */}
-            <div className="col-span-1">
+            <div className="md:col-span-1">
               <Swiper
                 spaceBetween={30}
                 centeredSlides={true}

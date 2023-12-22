@@ -2,10 +2,10 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const ManageShop = () => {
     const allShop = useLoaderData()
-      if (!Array.isArray(allShop)) {
-        console.error("allShop is not an array:", allShop);
-        return <div>Error loading shop data</div>; // You can customize this error message
-      }
+      // if (!Array.isArray(allShop)) {
+      //   console.error("allShop is not an array:", allShop);
+      //   return <div>Error loading shop data</div>; 
+      // }
     return (
       <div>
         <div className="w-[800px] mx-auto">
@@ -21,12 +21,13 @@ const ManageShop = () => {
                 <tr>
                   <th>#</th>
                   <th>Shop Name</th>
+                  <th>Product Limit</th>
                   <th>Shop Description</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                {allShop.map((shop, index) => (
+                {allShop?.map((shop, index) => (
                   <tr key={shop._id}>
                     <th>
                       <label>{index + 1}</label>
@@ -46,10 +47,11 @@ const ManageShop = () => {
                         </div>
                       </div>
                     </td>
-                    <td>{shop?.shopInfo}</td>
+                    <td>{allShop.length}</td>
+                    <td className="w-[110px]">{shop?.shopInfo}</td>
                     <th>
                       <Link>
-                        <button className="btn btn-ghost btn-xs">Send Notice</button>
+                        <button className="btn  rounded-none text-white bg-[#f31312] border-none">Send Notice</button>
                       </Link>
                     </th>
                     

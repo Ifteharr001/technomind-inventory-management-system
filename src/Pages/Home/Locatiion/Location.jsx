@@ -1,7 +1,7 @@
 
 const Location = () => {
     return (
-      <div className="w-[1140px] mx-auto my-16">
+      <div className="lg:w-[1140px] mx-auto my-16">
         <div className="card lg:card-side bg-base-100 shadow-xl rounded-none">
           <figure>
             <img
@@ -16,7 +16,7 @@ const Location = () => {
               <span className="text-[#f31312]">----</span> Our Shop Location{" "}
               <span className="text-[#f31312]">----</span>
             </h2>
-            <p className="mt-8 w-[500px]">
+            <p className="mt-8 md:w-[500px]">
               Welcome to the heart of Sylhet City —an enclave of exquisite
               discoveries awaits at TechnoMinds. Strategically located at Sylhet
               city, our shop is more than just a place.

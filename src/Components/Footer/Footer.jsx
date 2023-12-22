@@ -2,7 +2,7 @@
 const Footer = () => {
     return (
       <div className="bg-[#f2f2f2]">
-        <footer className="footer p-10 text-base-content w-[1140px] mx-auto">
+        <footer className="footer p-10 text-base-content lg:w-[1140px] mx-auto">
           <aside>
             <img
               className="w-24"

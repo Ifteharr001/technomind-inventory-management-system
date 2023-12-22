@@ -3,12 +3,13 @@ import useShop from "../Hooks/useShop";
 import { useContext} from "react";
 import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
 import useAdmin from "../Hooks/useAdmin";
+import useCheckOut from "../Hooks/useCheckOut";
 
 const Dashboard = () => {
    
 
   const [isAdmin] = useAdmin();
-
+  const [check] = useCheckOut();
      const { logOut } = useContext(AuthContext);
      
      const handleLogOut = () => {
@@ -140,6 +141,20 @@ const Dashboard = () => {
                     }
                   >
                     Sales Collection
+                  </NavLink>
+                </li>
+                <li className="font-bold">
+                  <NavLink
+                    to="/dashboard/checkOut"
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "text-[#fff]"
+                        : isActive
+                        ? "text-[#fff]  border-b-4  bg-transparent border-[#fff] rounded-none"
+                        : ""
+                    }
+                  > 
+                    Check Out {check.length}
                   </NavLink>
                 </li>
               </>

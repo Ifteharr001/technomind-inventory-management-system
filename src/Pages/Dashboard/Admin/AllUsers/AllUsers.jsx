@@ -11,12 +11,7 @@ const AllUsers = () => {
         }
     });
 
-    const handleMakeAdmin = user => {
-        axiosSecure.patch(`/users/admin/${user._id}`)
-        .then(res => {
-            console.log(res.data)
-        })
-    }
+    
     return (
       <div className="w-[800px] mx-auto">
         <h2 className="text-4xl text-center mt-16  font-bold italic ...">
@@ -48,7 +43,12 @@ const AllUsers = () => {
                   <td>{user.email}</td>
                   <td>User</td>
                   <td>
-                    <button onClick={() => handleMakeAdmin(user)} className="btn">Send Email</button>
+                    <button
+                      className="btn rounded-none text-white bg-[#f31312] border-none"
+                   
+                    >
+                      Send Email
+                    </button>
                   </td>
                 </tr>
               ))}

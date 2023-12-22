@@ -10,13 +10,13 @@ const Testimonial = () => {
   }, [])
   
     return (
-      <div className="bg-[#faf5f5] w-[1140px] mx-auto">
+      <div className="bg-[#faf5f5] lg:w-[1140px] mx-auto">
         <h2 className="text-4xl text-center mt-16 py-10  font-bold italic ...">
           {" "}
           <span className="text-[#f31312]">----</span> Users Feedback{" "}
           <span className="text-[#f31312]">----</span>
         </h2>
-       <div className="grid grid-cols-2 gap-6 pl-4 pr-4 pb-8">
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pl-4 pr-4 pb-8">
          {
           testimonial?.map(testimonials => <TestimonialCard key={testimonials._id} testimonials={testimonials}></TestimonialCard>)
         }

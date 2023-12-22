@@ -16,6 +16,8 @@ import AdminProfile from "../Pages/Dashboard/Admin/AdminProfile/AdminProfile";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 import ManageShop from "../Pages/Dashboard/Admin/ManageShop/ManageShop";
 import SaleSummary from "../Pages/Dashboard/Admin/SaleSummary/SaleSummary";
+import CheckOut from "../Pages/Dashboard/AddProduct/CheckOut/CheckOut";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +79,14 @@ export const router = createBrowserRouter([
         path: "salesCollection",
         element: <SalesCollection></SalesCollection>,
       },
+      {
+        path: "checkOut",
+        element: <CheckOut></CheckOut>
+      },
+      {
+        path: 'payment',
+        element: <Payment></Payment>
+      },
 
       //admin routes
       {
@@ -90,7 +100,7 @@ export const router = createBrowserRouter([
       {
         path: "manageShop",
         element: <ManageShop></ManageShop>,
-        loader: () => fetch("https://server-side-ten-nu.vercel.app/useShop"),
+        loader: () => fetch("https://server-side-ten-nu.vercel.app/userShop"),
       },
       {
         path: "saleSummary",
